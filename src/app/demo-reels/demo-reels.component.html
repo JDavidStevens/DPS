@@ -1,0 +1,7 @@
+<div>
+  <app-demo-reel></app-demo-reel>
+  <div *ngFor="let option of demoReelOptions">
+    <img src={{option.source}}/>
+    <label>{{option.title}}</label>
+  </div>
+</div>
