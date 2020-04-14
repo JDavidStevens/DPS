@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared/shared.service';
-import { DemoReelsService } from './demo-reels.service';
+import { DemoReelsService, Video } from './demo-reels.service';
 
 @Component({
   selector: 'app-demo-reels',
@@ -9,6 +9,7 @@ import { DemoReelsService } from './demo-reels.service';
 })
 export class DemoReelsComponent implements OnInit {
   public demoReelOptions = this.shared.DemoReelInfo;
+  public selectedVideo: Video;
 
   constructor(private shared: SharedService, private demoReelsService: DemoReelsService) { }
 
@@ -18,5 +19,4 @@ export class DemoReelsComponent implements OnInit {
   public onVideoSelect(id: number) {
     this.demoReelsService.getVideo(id);
   }
-
 }

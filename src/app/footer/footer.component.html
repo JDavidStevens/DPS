@@ -1,1 +1,5 @@
-<p>footer works!</p>
+<div *ngFor="let media of media">
+  <div>
+    <a href={{media.link}}><img src={{media.source}}/></a>
+  </div>
+</div>

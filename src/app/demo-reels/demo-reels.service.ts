@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
-import { mergeMap, map, tap, filter } from 'rxjs/operators';
+import { mergeMap, tap, filter } from 'rxjs/operators';
+
+export interface Video {
+  id: number;
+  title: string;
+  description: string;
+  videoUrl: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class DemoReelsService {
   public openVideo = false;
-  public videos: Observable<Array<{id: number, title: string; description: string, videoUrl: string}>> =
+  // public videos: Observable<Array<{id: number, title: string; description: string, videoUrl: string}>> =
+  public videos: Observable<Array<Video>> =
   of([
     {id: 1,
     title: 'Sound (re)Design Demo',
