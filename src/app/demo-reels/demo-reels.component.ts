@@ -16,7 +16,7 @@ export class DemoReelsComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onVideoSelect(id: number) {
-    this.demoReelsService.getVideo(id);
+  public onVideoSelect(id: number): void {
+    this.selectedVideo = this.demoReelsService.getVideo(id);
   }
 }

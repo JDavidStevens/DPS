@@ -15,7 +15,6 @@ export interface Video {
 })
 export class DemoReelsService {
   public openVideo = false;
-  // public videos: Observable<Array<{id: number, title: string; description: string, videoUrl: string}>> =
   public videos: Observable<Array<Video>> =
   of([
     {id: 1,
@@ -30,12 +29,15 @@ export class DemoReelsService {
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  public getVideo(id: number): Observable<object> {
-    return this.videos.pipe(
-      mergeMap((video) => video.map((vid) => vid)),
+  public getVideo(id: number): Video {
+    let video;
+    this.videos.pipe(
+      mergeMap((vid) => vid),
       filter((vid) => vid.id === id),
-      tap(() => this.videoToggle(true))
+      tap((vid) => video = vid)
+      // tap(() => this.videoToggle(true))
     );
+    return video;
   }
 
   public videoToggle(val: boolean): void {
