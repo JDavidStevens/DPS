@@ -2,10 +2,10 @@
   <h2>SOUND DESIGN</h2>
   <div class="video-wrapper">
     <iframe></iframe>
-    <h3></h3>
-    <p></p>
+    <h3>{{selectedVideo?.title}}</h3>
+    <p>{{selectedVideo?.description}}</p>
   </div>
-  <div>Back to Demo Reels</div>
+  <div (click)="onCloseVideo()">Close</div>
   <div class="prev-next-wrapper">
     <div><span>prev</span>/<span>next</span></div>
   </div>

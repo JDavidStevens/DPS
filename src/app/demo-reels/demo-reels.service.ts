@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { mergeMap, tap, filter } from 'rxjs/operators';
 
 export interface Video {
@@ -14,7 +14,7 @@ export interface Video {
   providedIn: 'root'
 })
 export class DemoReelsService {
-  public openVideo = false;
+  public openVideo$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public videos: Observable<Array<Video>> =
   of([
     {id: 1,
@@ -30,17 +30,13 @@ export class DemoReelsService {
   constructor(private sanitizer: DomSanitizer) { }
 
   public getVideo(id: number): Video {
-    let video;
+    let video: Video;
     this.videos.pipe(
       mergeMap((vid) => vid),
       filter((vid) => vid.id === id),
-      tap((vid) => video = vid)
-      // tap(() => this.videoToggle(true))
-    );
+      tap((vid) => video = vid),
+      tap(() => this.openVideo$.next(true))
+    ).subscribe();
     return video;
-  }
-
-  public videoToggle(val: boolean): void {
-    this.openVideo = val;
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Video, DemoReelsService } from '../demo-reels.service';
 
 @Component({
   selector: 'app-demo-reel',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./demo-reel.component.css']
 })
 export class DemoReelComponent implements OnInit {
+@Input() selectedVideo: Video;
 
-  constructor() { }
+  constructor(private demoReelsService: DemoReelsService) { }
 
   ngOnInit() {
+  }
+
+  onCloseVideo() {
+    this.demoReelsService.openVideo$.next(false);
   }
 
 }

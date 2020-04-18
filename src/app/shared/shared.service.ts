@@ -19,8 +19,7 @@ export class SharedService {
 
   public DemoReelInfo: {id: number, title: string, source: string}[] = [
     {id: 1, title: 'SOUND DESIGN', source: 'assets/images/demo-reel/sound_design.jpg'},
-    {id: 2, title: 'MUSIC', source: 'assets/images/demo-reel/music.jpg'},
-    {id: 3, title: 'EXTRAS', source: 'assets/images/demo-reel/extras.jpg'}
+    {id: 2, title: 'EXTRAS', source: 'assets/images/demo-reel/extras.jpg'}
   ];
 
   public media: {title: string, source: string, link: string}[] = [
